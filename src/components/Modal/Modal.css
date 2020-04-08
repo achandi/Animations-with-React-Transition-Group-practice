@@ -1,0 +1,52 @@
+.Modal {
+  position: fixed;
+  z-index: 200;
+  border: 1px solid #eee;
+  box-shadow: 0 2px 2px #ccc;
+  background-color: white;
+  padding: 10px;
+  text-align: center;
+  box-sizing: border-box;
+  top: 30%;
+  left: 25%;
+  width: 50%;
+  transition: all 1s ease-out;
+}
+.ModalClose {
+  opacity: 0;
+  transform: translateY(-100%);
+}
+
+.ModalOpen {
+  /* animation */
+  /* openModal is the keyframe defined below */
+  /* transition below specifies css propteries not applied instantly but animated over time */
+  /* all = used with translateY , opacity, etc, in classes below, linear = smooth ease-out = start faster than u end */
+  /*  if you dont add forwards, it will bounce back right to 0%. Forward means keep at 100% */
+  animation: openModal 0.4s ease-out forwards;
+}
+
+/* Css animation unlike transitions lets u define more complex and controlled animation  */
+/* Transition = whenever any property change, animate that change and figure out how to animate on your own
+Animation = detailed described set of steps you want to execute. This is done thorugh keyframes with @addKeyFrames then u give these keyframes a name of your choice like openModal
+@keyframes openModal { 0% {  }   25% {} etc  OR   from {} to {}   }   <inside this block define steps, in animattion percentages or just with from and to  */
+
+@keyframes openModal {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateY(20%);
+    /* 20% for bump effect, means it will bump down below 0 for a bit before going back up to 0 */
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+/* keyframes for closeModal would be opposite of above keyframe/animation */
